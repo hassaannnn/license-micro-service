@@ -20,19 +20,5 @@ public class LicenseMicroServiceApplication {
 		SpringApplication.run(LicenseMicroServiceApplication.class, args);
 	}
 
-	@GetMapping("/hello")
-	public String hello(@RequestParam(value = "name", defaultValue = "World") String name) {
-		return String.format("Hello %s!", name);
-	}
 
-	@Bean
-	CommandLineRunner runner(LicenseRepository rep) {
-		return args -> {
-			System.out.println("Hello World!");
-//			License newL = new License("Hasssaan");
-//			rep.insert(newL);
-			License foundUser = rep.findByLicenseKey("9997d8de-aa4a-420c-9f65-44c8ce1d0b5a");
-			System.out.println(rep.findAll());
-		};
-	}
 }

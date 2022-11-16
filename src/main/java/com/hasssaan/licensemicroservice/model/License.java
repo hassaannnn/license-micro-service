@@ -1,6 +1,8 @@
 package com.hasssaan.licensemicroservice.model;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -15,6 +17,8 @@ public class License {
     public Date expirationDate;
     public int renewalAmount;
     public String customerIdentifier;
+    public int activeSessions;
+    public boolean sharingViolation;
 
     public License() {}
 
@@ -25,11 +29,32 @@ public class License {
         this.expirationDate = c.getTime();
         this.renewalAmount = 0;
         this.customerIdentifier = customerIdentifier;
+        this.activeSessions = 0;
+        this.sharingViolation = false;
     }
-
     public boolean isLicenseExpired() {
         return this.expirationDate.before(Calendar.getInstance().getTime());
     }
+
+    public void renew() {
+        Calendar c = (Calendar.getInstance());
+        c.add(Calendar.DATE, 30);
+        this.expirationDate = c.getTime();
+        this.renewalAmount++;
+    }
+
+    public void renew(int daysToAdd) {
+        Calendar c = (Calendar.getInstance());
+        c.add(Calendar.DATE, daysToAdd);
+        this.expirationDate = c.getTime();
+        this.renewalAmount++;
+    }
+
+
+
+
+
+
 
     public String getId() {
         return id;
@@ -69,6 +94,22 @@ public class License {
 
     public void setCustomerIdentifier(String customerIdentifier) {
         this.customerIdentifier = customerIdentifier;
+    }
+
+    public int getActiveSessions() {
+        return activeSessions;
+    }
+
+    public void setActiveSessions(int activeSessions) {
+        this.activeSessions = activeSessions;
+    }
+
+    public boolean isSharingViolation() {
+        return sharingViolation;
+    }
+
+    public void setSharingViolation(boolean sharingViolation) {
+        this.sharingViolation = sharingViolation;
     }
 
     @Override
