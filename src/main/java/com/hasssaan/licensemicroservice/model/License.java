@@ -1,8 +1,6 @@
 package com.hasssaan.licensemicroservice.model;
 
 import org.springframework.data.annotation.Id;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -20,7 +18,8 @@ public class License {
     public int activeSessions;
     public boolean sharingViolation;
 
-    public License() {}
+    public License() {
+    }
 
     public License(String customerIdentifier) {
         Calendar c = (Calendar.getInstance());
@@ -32,6 +31,7 @@ public class License {
         this.activeSessions = 0;
         this.sharingViolation = false;
     }
+
     public boolean isLicenseExpired() {
         return this.expirationDate.before(Calendar.getInstance().getTime());
     }
@@ -49,11 +49,6 @@ public class License {
         this.expirationDate = c.getTime();
         this.renewalAmount++;
     }
-
-
-
-
-
 
 
     public String getId() {
