@@ -27,6 +27,50 @@ public class License {
         this.customerIdentifier = customerIdentifier;
     }
 
+    public boolean isLicenseExpired() {
+        return this.expirationDate.before(Calendar.getInstance().getTime());
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getLicenseKey() {
+        return licenseKey;
+    }
+
+    public void setLicenseKey(String licenseKey) {
+        this.licenseKey = licenseKey;
+    }
+
+    public Date getExpirationDate() {
+        return expirationDate;
+    }
+
+    public void setExpirationDate(Date expirationDate) {
+        this.expirationDate = expirationDate;
+    }
+
+    public int getRenewalAmount() {
+        return renewalAmount;
+    }
+
+    public void setRenewalAmount(int renewalAmount) {
+        this.renewalAmount = renewalAmount;
+    }
+
+    public String getCustomerIdentifier() {
+        return customerIdentifier;
+    }
+
+    public void setCustomerIdentifier(String customerIdentifier) {
+        this.customerIdentifier = customerIdentifier;
+    }
+
     @Override
     public String toString() {
         return String.format(
